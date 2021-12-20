@@ -1,3 +1,6 @@
+'''
+Nelder-Mead Simplex algorithm (method='Nelder-Mead')
+'''
 import numpy as np
 from scipy.optimize import minimize
 

@@ -1,6 +1,9 @@
+'''
+Newton-Conjugate-Gradient algorithm (method='Newton-CG')
+'''
 import numpy as np
 from scipy.optimize import minimize
-from Nelder_Mead import rosen
+from nelder_mead import rosen
 from BFGS import rosen_der
 '''
 i -> [1:-1]
@@ -25,9 +28,11 @@ def rosen_hess_p(x, p):
     Hp[1:-1] = -400*x[:-2]*p[:-2] + (202 + 1200*x[1:-1]**2 - 400*x[2:])*p[1:-1] - 400*x[1:-1]*p[2:]
     Hp[-1] = -400*x[-2]*p[-2] + 200*p[-1]
     return Hp
-x0 = np.array([1.3, 0.7, 0.8, 1.9, 1.2])
-res = minimize(rosen, x0, method='Newton-CG', jac=rosen_der, hess=rosen_hess, options={'xtol':1e-8, 'disp':True})
-print(res.x)
+if __name__=='__main__':
 
-res = minimize(rosen, x0, method='Newton-CG', jac=rosen_der, hessp=rosen_hess_p, options={'xtol':1e-8, 'disp':True})
-print(res.x)
+    x0 = np.array([1.3, 0.7, 0.8, 1.9, 1.2])
+    res = minimize(rosen, x0, method='Newton-CG', jac=rosen_der, hess=rosen_hess, options={'xtol':1e-8, 'disp':True})
+    print(res.x)
+
+    res = minimize(rosen, x0, method='Newton-CG', jac=rosen_der, hessp=rosen_hess_p, options={'xtol':1e-8, 'disp':True})
+    print(res.x)

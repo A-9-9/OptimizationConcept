@@ -1,6 +1,9 @@
+'''
+Broyden-Fletcher-Goldfarb-Shanno algorithm (method='BFGS')
+'''
 import numpy as np
 from scipy.optimize import minimize
-from Nelder_Mead import rosen
+from nelder_mead import rosen
 '''
 x -> xi
 xm = x[1:-1] -> xj
